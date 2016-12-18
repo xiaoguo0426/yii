@@ -153,8 +153,8 @@ class Module extends \yii\base\Module implements BootstrapInterface
             ],
             [
                 'class' => 'yii\web\UrlRule',
-                'route' => $this->id . '/<controller>/<action>',
-                'pattern' => $this->id . '/<controller:[\w\-]+>/<action:[\w\-]+>',
+                'route' => $this->id . '/<controllers>/<action>',
+                'pattern' => $this->id . '/<controllers:[\w\-]+>/<action:[\w\-]+>',
             ]
         ], false);
     }

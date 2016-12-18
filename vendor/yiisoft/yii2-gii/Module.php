@@ -88,7 +88,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             $app->getUrlManager()->addRules([
                 ['class' => 'yii\web\UrlRule', 'pattern' => $this->id, 'route' => $this->id . '/default/index'],
                 ['class' => 'yii\web\UrlRule', 'pattern' => $this->id . '/<id:\w+>', 'route' => $this->id . '/default/view'],
-                ['class' => 'yii\web\UrlRule', 'pattern' => $this->id . '/<controller:[\w\-]+>/<action:[\w\-]+>', 'route' => $this->id . '/<controller>/<action>'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => $this->id . '/<controllers:[\w\-]+>/<action:[\w\-]+>', 'route' => $this->id . '/<controllers>/<action>'],
             ], false);
         } elseif ($app instanceof \yii\console\Application) {
             $app->controllerMap[$this->id] = [
@@ -160,7 +160,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
         return [
             'model' => ['class' => 'yii\gii\generators\model\Generator'],
             'crud' => ['class' => 'yii\gii\generators\crud\Generator'],
-            'controller' => ['class' => 'yii\gii\generators\controller\Generator'],
+            'controllers' => ['class' => 'yii\gii\generators\controller\Generator'],
             'form' => ['class' => 'yii\gii\generators\form\Generator'],
             'module' => ['class' => 'yii\gii\generators\module\Generator'],
             'extension' => ['class' => 'yii\gii\generators\extension\Generator'],

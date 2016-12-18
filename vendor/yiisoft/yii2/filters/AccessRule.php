@@ -31,7 +31,7 @@ class AccessRule extends Component
      */
     public $actions;
     /**
-     * @var array list of the controller IDs that this rule applies to. Each controller ID is prefixed with the module ID (if any).
+     * @var array list of the controllers IDs that this rule applies to. Each controllers ID is prefixed with the module ID (if any).
      * The comparison is case-sensitive. If not set or empty, it means this rule applies to all controllers.
      */
     public $controllers;
@@ -58,7 +58,6 @@ class AccessRule extends Component
     public $ips;
     /**
      * @var array list of request methods (e.g. `GET`, `POST`) that this rule applies to.
-     * The request methods must be specified in uppercase.
      * If not set or empty, it means this rule applies to all request methods.
      * @see \yii\web\Request::method
      */
@@ -123,8 +122,8 @@ class AccessRule extends Component
     }
 
     /**
-     * @param Controller $controller the controller
-     * @return boolean whether the rule applies to the controller
+     * @param Controller $controller the controllers
+     * @return boolean whether the rule applies to the controllers
      */
     protected function matchController($controller)
     {
@@ -176,12 +175,12 @@ class AccessRule extends Component
     }
 
     /**
-     * @param string $verb the request method
+     * @param string $verb the request method.
      * @return boolean whether the rule applies to the request
      */
     protected function matchVerb($verb)
     {
-        return empty($this->verbs) || in_array($verb, $this->verbs, true);
+        return empty($this->verbs) || in_array(strtoupper($verb), array_map('strtoupper', $this->verbs), true);
     }
 
     /**

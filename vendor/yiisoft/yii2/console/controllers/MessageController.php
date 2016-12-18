@@ -38,7 +38,7 @@ use yii\i18n\GettextPoFile;
 class MessageController extends Controller
 {
     /**
-     * @var string controller default action ID.
+     * @var string controllers default action ID.
      */
     public $defaultAction = 'extract';
     /**
@@ -141,22 +141,22 @@ class MessageController extends Controller
     public function options($actionID)
     {
         return array_merge(parent::options($actionID), [
-                'sourcePath',
-                'messagePath',
-                'languages',
-                'translator',
-                'sort',
-                'overwrite',
-                'removeUnused',
-                'markUnused',
-                'except',
-                'only',
-                'format',
-                'db',
-                'sourceMessageTable',
-                'messageTable',
-                'catalog',
-                'ignoreCategories'
+            'sourcePath',
+            'messagePath',
+            'languages',
+            'translator',
+            'sort',
+            'overwrite',
+            'removeUnused',
+            'markUnused',
+            'except',
+            'only',
+            'format',
+            'db',
+            'sourceMessageTable',
+            'messageTable',
+            'catalog',
+            'ignoreCategories',
         ]);
     }
 
@@ -180,7 +180,7 @@ class MessageController extends Controller
             't' => 'translator',
             'm' => 'sourceMessageTable',
             's' => 'sourcePath',
-            'r' => 'removeUnused'
+            'r' => 'removeUnused',
         ]);
     }
 

@@ -38,9 +38,9 @@ defined('STDERR') or define('STDERR', fopen('php://stderr', 'w'));
  * yii <route> [--param1=value1 --param2 ...]
  * ```
  *
- * where `<route>` refers to a controller route in the form of `ModuleID/ControllerID/ActionID`
+ * where `<route>` refers to a controllers route in the form of `ModuleID/ControllerID/ActionID`
  * (e.g. `sitemap/create`), and `param1`, `param2` refers to a set of named parameters that
- * will be used to initialize the controller action (e.g. `--since=0` specifies a `since` parameter
+ * will be used to initialize the controllers action (e.g. `--since=0` specifies a `since` parameter
  * whose value is 0 and a corresponding `$since` parameter is passed to the action method).
  *
  * A `help` command is provided by default, which lists available commands and shows their usage.
@@ -49,6 +49,10 @@ defined('STDERR') or define('STDERR', fopen('php://stderr', 'w'));
  * ```
  * yii help
  * ```
+ *
+ * @property ErrorHandler $errorHandler The error handler application component. This property is read-only.
+ * @property Request $request The request component. This property is read-only.
+ * @property Response $response The response component. This property is read-only.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
@@ -71,7 +75,7 @@ class Application extends \yii\base\Application
      */
     public $enableCoreCommands = true;
     /**
-     * @var Controller the currently active controller instance
+     * @var Controller the currently active controllers instance
      */
     public $controller;
 
@@ -152,16 +156,16 @@ class Application extends \yii\base\Application
     }
 
     /**
-     * Runs a controller action specified by a route.
-     * This method parses the specified route and creates the corresponding child module(s), controller and action
+     * Runs a controllers action specified by a route.
+     * This method parses the specified route and creates the corresponding child module(s), controllers and action
      * instances. It then calls [[Controller::runAction()]] to run the action with the given parameters.
      * If the route is empty, the method will use [[defaultRoute]].
      *
-     * For example, to run `public function actionTest($a, $b)` assuming that the controller has options the following
+     * For example, to run `public function actionTest($a, $b)` assuming that the controllers has options the following
      * code should be used:
      *
      * ```php
-     * \Yii::$app->runAction('controller/test', ['option' => 'value', $a, $b]);
+     * \Yii::$app->runAction('controllers/test', ['option' => 'value', $a, $b]);
      * ```
      *
      * @param string $route the route that specifies the action.
@@ -195,6 +199,33 @@ class Application extends \yii\base\Application
             'migrate' => 'yii\console\controllers\MigrateController',
             'serve' => 'yii\console\controllers\ServeController',
         ];
+    }
+
+    /**
+     * Returns the error handler component.
+     * @return ErrorHandler the error handler application component.
+     */
+    public function getErrorHandler()
+    {
+        return $this->get('errorHandler');
+    }
+
+    /**
+     * Returns the request component.
+     * @return Request the request component.
+     */
+    public function getRequest()
+    {
+        return $this->get('request');
+    }
+
+    /**
+     * Returns the response component.
+     * @return Response the response component.
+     */
+    public function getResponse()
+    {
+        return $this->get('response');
     }
 
     /**

@@ -55,7 +55,7 @@ class UrlRule extends Object implements UrlRuleInterface
      */
     public $host;
     /**
-     * @var string the route to the controller action
+     * @var string the route to the controllers action
      */
     public $route;
     /**
@@ -383,8 +383,8 @@ class UrlRule extends Object implements UrlRuleInterface
      * @see placeholders
      * @since 2.0.7
      */
-     protected function substitutePlaceholderNames (array $matches)
-     {
+    protected function substitutePlaceholderNames(array $matches)
+    {
         foreach ($this->placeholders as $placeholder => $name) {
             if (isset($matches[$placeholder])) {
                 $matches[$name] = $matches[$placeholder];

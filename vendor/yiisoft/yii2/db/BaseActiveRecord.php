@@ -218,7 +218,7 @@ abstract class BaseActiveRecord extends Model implements ActiveRecordInterface
      * 2. Add a `required` validation rule for the version column to ensure the version value is submitted.
      * 3. In the Web form that collects the user input, add a hidden field that stores
      *    the lock version of the recording being updated.
-     * 4. In the controller action that does the data updating, try to catch the [[StaleObjectException]]
+     * 4. In the controllers action that does the data updating, try to catch the [[StaleObjectException]]
      *    and implement necessary business logic (e.g. merging the changes, prompting stated data)
      *    to resolve the conflict.
      *
@@ -424,7 +424,7 @@ abstract class BaseActiveRecord extends Model implements ActiveRecordInterface
      */
     public function hasAttribute($name)
     {
-        return isset($this->_attributes[$name]) || in_array($name, $this->attributes());
+        return isset($this->_attributes[$name]) || in_array($name, $this->attributes(), true);
     }
 
     /**
@@ -912,7 +912,7 @@ abstract class BaseActiveRecord extends Model implements ActiveRecordInterface
     public function afterSave($insert, $changedAttributes)
     {
         $this->trigger($insert ? self::EVENT_AFTER_INSERT : self::EVENT_AFTER_UPDATE, new AfterSaveEvent([
-            'changedAttributes' => $changedAttributes
+            'changedAttributes' => $changedAttributes,
         ]));
     }
 

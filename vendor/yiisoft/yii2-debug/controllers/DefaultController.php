@@ -14,7 +14,7 @@ use yii\debug\models\search\Debug;
 use yii\web\Response;
 
 /**
- * Debugger controller
+ * Debugger controllers
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0

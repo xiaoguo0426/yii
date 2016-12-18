@@ -10,16 +10,16 @@ namespace yii\base;
 use Yii;
 
 /**
- * Controller is the base class for classes containing controller logic.
+ * Controller is the base class for classes containing controllers logic.
  *
- * @property Module[] $modules All ancestor modules that this controller is located within. This property is
+ * @property Module[] $modules All ancestor modules that this controllers is located within. This property is
  * read-only.
- * @property string $route The route (module ID, controller ID and action ID) of the current request. This
+ * @property string $route The route (module ID, controllers ID and action ID) of the current request. This
  * property is read-only.
- * @property string $uniqueId The controller ID that is prefixed with the module ID (if any). This property is
+ * @property string $uniqueId The controllers ID that is prefixed with the module ID (if any). This property is
  * read-only.
  * @property View|\yii\web\View $view The view object that can be used to render views or view files.
- * @property string $viewPath The directory containing the view files for this controller.
+ * @property string $viewPath The directory containing the view files for this controllers.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
@@ -27,21 +27,21 @@ use Yii;
 class Controller extends Component implements ViewContextInterface
 {
     /**
-     * @event ActionEvent an event raised right before executing a controller action.
+     * @event ActionEvent an event raised right before executing a controllers action.
      * You may set [[ActionEvent::isValid]] to be false to cancel the action execution.
      */
     const EVENT_BEFORE_ACTION = 'beforeAction';
     /**
-     * @event ActionEvent an event raised right after executing a controller action.
+     * @event ActionEvent an event raised right after executing a controllers action.
      */
     const EVENT_AFTER_ACTION = 'afterAction';
 
     /**
-     * @var string the ID of this controller.
+     * @var string the ID of this controllers.
      */
     public $id;
     /**
-     * @var Module $module the module that this controller belongs to.
+     * @var Module $module the module that this controllers belongs to.
      */
     public $module;
     /**
@@ -50,7 +50,7 @@ class Controller extends Component implements ViewContextInterface
      */
     public $defaultAction = 'index';
     /**
-     * @var null|string|boolean the name of the layout to be applied to this controller's views.
+     * @var null|string|false the name of the layout to be applied to this controllers's views.
      * This property mainly affects the behavior of [[render()]].
      * Defaults to null, meaning the actual layout value should inherit that from [[module]]'s layout value.
      * If false, no layout will be applied.
@@ -67,14 +67,14 @@ class Controller extends Component implements ViewContextInterface
      */
     private $_view;
     /**
-     * @var string the root directory that contains view files for this controller.
+     * @var string the root directory that contains view files for this controllers.
      */
     private $_viewPath;
 
 
     /**
-     * @param string $id the ID of this controller.
-     * @param Module $module the module that this controller belongs to.
+     * @param string $id the ID of this controllers.
+     * @param Module $module the module that this controllers belongs to.
      * @param array $config name-value pairs that will be used to initialize the object properties.
      */
     public function __construct($id, $module, $config = [])
@@ -85,8 +85,8 @@ class Controller extends Component implements ViewContextInterface
     }
 
     /**
-     * Declares external actions for the controller.
-     * This method is meant to be overwritten to declare external actions for the controller.
+     * Declares external actions for the controllers.
+     * This method is meant to be overwritten to declare external actions for the controllers.
      * It should return an array, with array keys being action IDs, and array values the corresponding
      * action class names or action configuration arrays. For example,
      *
@@ -110,7 +110,7 @@ class Controller extends Component implements ViewContextInterface
     }
 
     /**
-     * Runs an action within this controller with the specified action ID and parameters.
+     * Runs an action within this controllers with the specified action ID and parameters.
      * If the action ID is empty, the method will use [[defaultAction]].
      * @param string $id the ID of the action to be executed.
      * @param array $params the parameters (name-value pairs) to be passed to the action.
@@ -169,9 +169,9 @@ class Controller extends Component implements ViewContextInterface
 
     /**
      * Runs a request specified in terms of a route.
-     * The route can be either an ID of an action within this controller or a complete route consisting
-     * of module IDs, controller ID and action ID. If the route starts with a slash '/', the parsing of
-     * the route will start from the application; otherwise, it will start from the parent module of this controller.
+     * The route can be either an ID of an action within this controllers or a complete route consisting
+     * of module IDs, controllers ID and action ID. If the route starts with a slash '/', the parsing of
+     * the route will start from the application; otherwise, it will start from the parent module of this controllers.
      * @param string $route the route to be handled, e.g., 'view', 'comment/view', '/admin/comment/view'.
      * @param array $params the parameters to be passed to the action.
      * @return mixed the result of the action.
@@ -205,7 +205,7 @@ class Controller extends Component implements ViewContextInterface
      * Creates an action based on the given action ID.
      * The method first checks if the action ID has been declared in [[actions()]]. If so,
      * it will use the configuration declared there to create the action object.
-     * If not, it will look for a controller method whose name is in the format of `actionXyz`
+     * If not, it will look for a controllers method whose name is in the format of `actionXyz`
      * where `Xyz` stands for the action ID. If found, an [[InlineAction]] representing that
      * method will be created and returned.
      * @param string $id the action ID.
@@ -300,10 +300,10 @@ class Controller extends Component implements ViewContextInterface
     }
 
     /**
-     * Returns all ancestor modules of this controller.
+     * Returns all ancestor modules of this controllers.
      * The first module in the array is the outermost one (i.e., the application instance),
      * while the last is the innermost one.
-     * @return Module[] all ancestor modules that this controller is located within.
+     * @return Module[] all ancestor modules that this controllers is located within.
      */
     public function getModules()
     {
@@ -317,8 +317,8 @@ class Controller extends Component implements ViewContextInterface
     }
 
     /**
-     * Returns the unique ID of the controller.
-     * @return string the controller ID that is prefixed with the module ID (if any).
+     * Returns the unique ID of the controllers.
+     * @return string the controllers ID that is prefixed with the module ID (if any).
      */
     public function getUniqueId()
     {
@@ -327,7 +327,7 @@ class Controller extends Component implements ViewContextInterface
 
     /**
      * Returns the route of the current request.
-     * @return string the route (module ID, controller ID and action ID) of the current request.
+     * @return string the route (module ID, controllers ID and action ID) of the current request.
      */
     public function getRoute()
     {
@@ -351,7 +351,7 @@ class Controller extends Component implements ViewContextInterface
      * 1. In the first step, it determines the layout name and the context module:
      *
      * - If [[layout]] is specified as a string, use it as the layout name and [[module]] as the context module;
-     * - If [[layout]] is null, search through all ancestor modules of this controller and find the first
+     * - If [[layout]] is null, search through all ancestor modules of this controllers and find the first
      *   module whose [[Module::layout|layout]] is not null. The layout and the corresponding module
      *   are used as the layout name and the context module, respectively. If such a module is not found
      *   or the corresponding layout is not a string, it will return false, meaning no applicable layout.
@@ -437,7 +437,7 @@ class Controller extends Component implements ViewContextInterface
     }
 
     /**
-     * Sets the view object to be used by this controller.
+     * Sets the view object to be used by this controllers.
      * @param View|\yii\web\View $view the view object that can be used to render views or view files.
      */
     public function setView($view)
@@ -446,10 +446,10 @@ class Controller extends Component implements ViewContextInterface
     }
 
     /**
-     * Returns the directory containing view files for this controller.
-     * The default implementation returns the directory named as controller [[id]] under the [[module]]'s
+     * Returns the directory containing view files for this controllers.
+     * The default implementation returns the directory named as controllers [[id]] under the [[module]]'s
      * [[viewPath]] directory.
-     * @return string the directory containing the view files for this controller.
+     * @return string the directory containing the view files for this controllers.
      */
     public function getViewPath()
     {

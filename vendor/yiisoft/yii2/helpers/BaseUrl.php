@@ -55,7 +55,7 @@ class BaseUrl
      *
      * - If the route is an empty string, the current [[\yii\web\Controller::route|route]] will be used;
      * - If the route contains no slashes at all (e.g. `index`), it is considered to be an action ID
-     *   of the current controller and will be prepended with [[\yii\web\Controller::uniqueId]];
+     *   of the current controllers and will be prepended with [[\yii\web\Controller::uniqueId]];
      * - If the route has no leading slash (e.g. `site/index`), it is considered to be a route relative
      *   to the current module and will be prepended with the module's [[\yii\base\Module::uniqueId|uniqueId]].
      *
@@ -90,7 +90,7 @@ class BaseUrl
      * - string: generating an absolute URL with the specified scheme (either `http` or `https`).
      *
      * @return string the generated URL
-     * @throws InvalidParamException a relative route is given while there is no active controller
+     * @throws InvalidParamException a relative route is given while there is no active controllers
      */
     public static function toRoute($route, $scheme = false)
     {
@@ -112,7 +112,7 @@ class BaseUrl
      *
      * - If the route is an empty string, the current [[\yii\web\Controller::route|route]] will be used;
      * - If the route contains no slashes at all, it is considered to be an action ID
-     *   of the current controller and will be prepended with [[\yii\web\Controller::uniqueId]];
+     *   of the current controllers and will be prepended with [[\yii\web\Controller::uniqueId]];
      * - If the route has no leading slash, it is considered to be a route relative
      *   to the current module and will be prepended with the module's uniqueId.
      *
@@ -121,7 +121,7 @@ class BaseUrl
      *
      * @param string $route the route. This can be either an absolute route or a relative route.
      * @return string normalized route suitable for UrlManager
-     * @throws InvalidParamException a relative route is given while there is no active controller
+     * @throws InvalidParamException a relative route is given while there is no active controllers
      */
     protected static function normalizeRoute($route)
     {
@@ -133,7 +133,7 @@ class BaseUrl
 
         // relative route
         if (Yii::$app->controller === null) {
-            throw new InvalidParamException("Unable to resolve the relative route: $route. No active controller is available.");
+            throw new InvalidParamException("Unable to resolve the relative route: $route. No active controllers is available.");
         }
 
         if (strpos($route, '/') === false) {
@@ -201,7 +201,7 @@ class BaseUrl
      * - string: generating an absolute URL with the specified scheme (either `http` or `https`).
      *
      * @return string the generated URL
-     * @throws InvalidParamException a relative route is given while there is no active controller
+     * @throws InvalidParamException a relative route is given while there is no active controllers
      */
     public static function to($url = '', $scheme = false)
     {
@@ -296,7 +296,7 @@ class BaseUrl
 
     /**
      * Returns the canonical URL of the currently requested page.
-     * The canonical URL is constructed using the current controller's [[\yii\web\Controller::route]] and
+     * The canonical URL is constructed using the current controllers's [[\yii\web\Controller::route]] and
      * [[\yii\web\Controller::actionParams]]. You may use the following code in the layout view to add a link tag
      * about canonical URL:
      *
