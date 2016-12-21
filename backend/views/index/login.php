@@ -5,7 +5,7 @@
             <h1 class="logo-name">IN+</h1>
         </div>
         <h3>欢迎来到代理系统后台</h3>
-        <form class="m-t" role="form" action="<?= get_url('do-login')?>" method='post' data-validate data-ajax="true" data-comfirm="false"
+        <form class="m-t" role="form" action="<?= get_url()?>" method='post' data-validate data-ajax="true" data-comfirm="false"
               data-tips="正在登录..." onSubmit="return false;">
             <div class="form-group">
                 <input type="name" class="form-control" name="name" placeholder="用户名" title="请输入用户名" autofocus required />

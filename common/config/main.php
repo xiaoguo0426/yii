@@ -41,7 +41,6 @@ return [
         'errorHandler' => [
             'errorAction' => '',
         ],
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,//这里是隐藏index.php那个路径的

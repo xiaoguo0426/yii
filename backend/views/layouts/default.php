@@ -8,7 +8,7 @@
     <link href="<?php echo assets_url('font-awesome/css/font-awesome.min.css')?>" rel="stylesheet">
     <link href="<?php echo css_url('animate.css')?>" rel="stylesheet">
     <link href="<?php echo css_url('style.min.css')?>" rel="stylesheet">
-    <script>window.bbm_token='<?= Yii::$app->request->csrfToken ?>';</script>
+    <script>window.backend_token='<?= Yii::$app->request->csrfToken ?>';</script>
 </head>
 <?= $content ?>
 </html>
