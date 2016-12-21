@@ -45,10 +45,19 @@ class IndexController extends AdminController
             if (is_login()) {
                 $this->redirect(\Yii::$app->homeUrl);
             } else {
-                $this->layout = 'default';
                 return $this->render('login');
             }
         }
+    }
+
+    
+    /**
+     * 退出登录
+     */
+    public function actionLogout()
+    {
+        session('user', null);
+        $this->success('退出登录成功！', \yii\helpers\Url::toRoute('index/login'));
     }
 
 }

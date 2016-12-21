@@ -15,7 +15,7 @@ class AdminController extends CommonController
 	/**
 	 * 关闭默认布局
 	 */
-	public $layout = 'main';
+	public $layout = 'default';
 
     public function actionIsLogin(){
 

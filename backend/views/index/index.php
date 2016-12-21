@@ -48,6 +48,6 @@
         </div>
 	</div>
 </div>
-<script data-main="<?= js_url('app.js'); ?>" src="<?php echo js_url('require.js'); ?>"></script>
+<script data-main="<?= js_url('admin-index.js'); ?>" src="<?php echo js_url('require.js'); ?>"></script>
 <script src="<?= js_url('config.js'); ?>"></script>
 </body>
