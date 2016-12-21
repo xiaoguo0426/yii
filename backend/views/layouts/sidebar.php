@@ -3,13 +3,13 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
-					<span>
-						<img alt="image" class="img-circle" src="<?= img_url('profile_small.jpg') ?>"/>
-					</span>
+                    <span>
+                        <img alt="image" class="img-circle" src="<?= img_url('profile_small.jpg') ?>"/>
+                    </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<span class="clear"> <span class="block m-t-xs"> <strong
+                    <span class="clear"> <span class="block m-t-xs"> <strong
                                 class="font-bold"><?= session('user.realname') ?></strong>
-					 </span> <span class="text-muted text-xs block">角色 <b class="caret"></b></span> </span> </a>
+                     </span> <span class="text-muted text-xs block">角色 <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a data-modal="<?= get_url('user/update-pwd').'?id=' . session('user.id') ?>">修改密码</a></li>
                         <!--<li><a href="contacts.html">修改资料</a></li>-->

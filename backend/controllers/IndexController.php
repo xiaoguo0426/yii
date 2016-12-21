@@ -50,14 +50,14 @@ class IndexController extends AdminController
         }
     }
 
-    
+
     /**
      * 退出登录
      */
     public function actionLogout()
     {
         session('user', null);
-        $this->success('退出登录成功！', \yii\helpers\Url::toRoute('index/login'));
+        $this->success(['url'=>\yii\helpers\Url::toRoute('index/login')],'退出登录成功！');
     }
 
 }
