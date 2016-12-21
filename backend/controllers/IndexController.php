@@ -1,6 +1,9 @@
 <?php
 namespace backend\controllers;
 
+use backend\models\IndexModel;
+use backend\services\IndexService;
+
 class IndexController extends AdminController
 {
 

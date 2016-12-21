@@ -16,13 +16,13 @@ class IndexService extends AdminService
 
     public function checkAdmin($params){
 
-        $fields = "id,username,pwd,role_id,status,password_hash,realname";
+        $fields = "id,username,pwd,role_id,status,salt,realname";
         $conditions = "username = :name";
         $bind_params = [':name'=>$params['name']];
 
         $indexModel = new IndexModel();
         $result = $indexModel->find_base($fields,$conditions,$bind_params);
-           if ($result['pwd'] === md5($params['password'].$result['password_hash'])){
+           if ($result['pwd'] === md5($params['password'].$result['salt'])){
             return $result;
         }else{
             return false;
