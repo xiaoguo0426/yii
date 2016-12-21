@@ -21,10 +21,9 @@ class RoleController extends AdminController
     public static $title = '角色管理';
     public static $access_menu = ['index' => '首页', 'add' => '添加', 'del' => '删除', 'search' => '搜索', 'export' => '导出', 'get' => '获取', 'post' => '提交',];
 
-    public function init()
-    {
-        if (!isLogind()) {
-            $this->warning('当前登录已失效，请重新登录！', \yii\helpers\Url::to('index/login'));
+    public function init() {
+        if (!is_login()) {
+            $this->error(['url' => \yii\helpers\Url::home()], '当前登录已失效，请重新登录！');
         }
     }
 

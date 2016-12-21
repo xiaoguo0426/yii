@@ -22,8 +22,8 @@ class MenuController extends AdminController {
 	protected $_table = 'menu';
 
 	public function init() {
-		if (!isLogind()) {
-			$this->warning('当前登录已失效，请重新登录！', \yii\helpers\Url::to('index/login'));
+		if (!is_login()) {
+			$this->error(['url' => \yii\helpers\Url::home()], '当前登录已失效，请重新登录！');
 		}
 	}
 
